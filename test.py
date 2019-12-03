@@ -40,7 +40,6 @@ if __name__ == "__main__":
 
         scan = test_slice[0,:,:,2]
         tmp_label = test_label[0]
-        '''
 
         fig = plt.figure(figsize=(15, 10))
         plt.subplot(131)
@@ -55,7 +54,6 @@ if __name__ == "__main__":
         plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name,patient,slice_no), bbox_inches='tight')
         plt.close(fig)
 
-        '''
 
         pbar.update(1)
 

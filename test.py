@@ -25,7 +25,8 @@ if __name__ == "__main__":
     de = 0
     dc = 0
 
-    patient = 200
+    patient = 180 
+    pbar = tqdm(total = 39)
     
     while patient < 220:
 
@@ -102,17 +103,19 @@ if __name__ == "__main__":
         dc += dice_core
 
         patient += 1
+        pbar.update(1)
         
     dw_total = dw / 19 
     de_total = de / 19 
     dc_total = dc / 19 
     print("=======================================")
-    print("Summary (Patients 200 - 219)")
+    print("Summary (Patients 180 - 219)")
     print("---------------------------------------")
     print("Dice whole tumor score: {:0.4f}".format(dw_total)) 
     print("Dice enhancing tumor score: {:0.4f}".format(de_total)) 
     print("Dice core tumor score: {:0.4f}".format(dc_total)) 
     print("=======================================")
+    pbar.close()
 
 
 

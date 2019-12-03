@@ -56,15 +56,16 @@ def generate_data(start, end):
 
 if __name__ == "__main__":
     model_name = input("Model name: ")
+    model = load_model("models/{}.h5".format(model_name),
+            custom_objects = {"gen_dice_loss" : gen_dice_loss,
+                          "dice_coef" : dice_coef})
+
     start_pat = int(input("Start patient: "))
     end_pat = int(input("End patient: "))
     eps = int(input('Epochs: '))
     bs = int(input('Batch size: '))
     vs = float(input('Validation split: '))
 
-    model = load_model("models/{}.h5".format(model_name),
-            custom_objects = {"dice_coef_loss" : dice_coef_loss,
-                              "dice_coef" : dice_coef})
     print(model.summary())
 
     x, y = generate_data(start_pat, end_pat)

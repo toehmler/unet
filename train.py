@@ -6,6 +6,7 @@ from utils import *
 import json 
 import sys
 from sklearn.utils import class_weight
+import keras
 
 with open('config.json') as config_file:
     config = json.load(config_file)
@@ -59,11 +60,7 @@ def generate_data(start, end):
     class_weights = class_weight.compute_class_weight('balanced',
                                              np.unique(tmp_y),tmp_y)
 
-    one_hot_y = np.zeros((y.shape[0],y.shape[1],y.shape[2],5))
-    for z in range(y.shape[0]):
-        for i in range(y.shape[1]):
-            for j in range(y.shape[2]):
-                one_hot_y[z,i,j,int(y[z,i,j])] = 1
+    one_hot_y = keras.utils.to_categorical(y)
     pbar.close()
     return x, one_hot_y, class_weights
     
@@ -81,7 +78,8 @@ if __name__ == "__main__":
 
 
     x, y, class_weights = generate_data(start_pat, end_pat)
-    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=0.25, shuffle=True, class_weight=class_weights)
+
+    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=vs, shuffle=True, class_weight=class_weights)
     model.save('models/{}.h5'.format(model_name))
 
 

@@ -24,8 +24,8 @@ if __name__ == "__main__":
     de = 0
     dc = 0
 
-    patient = 190
-    while patient < 206:
+    patient = 200
+    while patient < 216:
 
         path = glob(config['root'] + "/*pat{}*".format(patient))[0]
         scans = load_scans(path)
@@ -105,11 +105,11 @@ if __name__ == "__main__":
     de_total = de / 15
     dc_total = dc / 15
     print("=======================================")
-    print("Summary (Patients 190 - 205)")
+    print("Summary (Patients 200 - 215)")
     print("---------------------------------------")
-    print("Dice whole tumor score: {:0.4f}".format(dice_whole)) 
-    print("Dice enhancing tumor score: {:0.4f}".format(dice_en)) 
-    print("Dice core tumor score: {:0.4f}".format(dice_core)) 
+    print("Dice whole tumor score: {:0.4f}".format(dw_total)) 
+    print("Dice enhancing tumor score: {:0.4f}".format(de_total)) 
+    print("Dice core tumor score: {:0.4f}".format(dc_total)) 
     print("=======================================")
 
 

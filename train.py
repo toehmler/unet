@@ -65,11 +65,20 @@ if __name__ == "__main__":
     model = load_model("models/{}.h5".format(model_name),
             custom_objects = {"dice_coef" : dice_coef,
                               "dice_coef_loss" : dice_coef_loss})  
+
+    start_pat = sys.argv[1]
+    end_pat = sys.argv[2]
+    eps = sys.argv[3]
+    bs = sys.argv[4]
+    vs = sys.argv[5]
+
+    '''
     start_pat = int(input("Start patient: "))
     end_pat = int(input("End patient: "))
     eps = int(input('Epochs: '))
     bs = int(input('Batch size: '))
     vs = float(input('Validation split: '))
+    '''
 
 
     x, y = generate_data(start_pat, end_pat)

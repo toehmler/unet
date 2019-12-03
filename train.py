@@ -36,8 +36,7 @@ def generate_data(start, end):
         labels = np.array(labels)
 
         # transform data to one hot encoding
-        current_y = labels[:,:,keras.utils.to_categorical(labels)
-        '''
+#        current_y = labels[:,:,keras.utils.to_categorical(labels)
         pbar2 = tqdm(total = labels.shape[0])
         current_y = np.zeros((labels.shape[0],labels.shape[1],labels.shape[2],5))
         for z in range(labels.shape[0]):
@@ -46,7 +45,6 @@ def generate_data(start, end):
                 for j in range(labels.shape[2]):
                     current_y[z,i,j,int(labels[z,i,j])] = 1
         pbar2.close()
-        '''
         x.extend(current_x)
         y.extend(current_y)
 

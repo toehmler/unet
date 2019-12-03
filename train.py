@@ -26,9 +26,6 @@ def generate_data(start, end):
         for slice in scans:
             slice_label = slice[:,:,4]
             slice_x = slice[:,:,:4]
-            # exclude slices that are more than 75% background
-#            if len(np.argwhere(slice_x == 0)) > (240*240*3):
-#                continue
             current_x.append(slice_x)
             categorical = keras.utils.to_categorical(slice_label, 
                                                     num_classes = 5)

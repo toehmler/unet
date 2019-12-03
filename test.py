@@ -44,6 +44,7 @@ if __name__ == "__main__":
             gt.extend(test_label[0])
             pred.extend(prediction)
 
+            '''
             scan = test_slice[0,:,:,2]
             tmp_label = test_label[0]
 
@@ -59,6 +60,7 @@ if __name__ == "__main__":
             plt.imshow(prediction,cmap='gray')
             plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name,patient,slice_no), bbox_inches='tight')
             plt.close(fig)
+            '''
 
 
 
@@ -98,7 +100,6 @@ if __name__ == "__main__":
         dc += dice_core
 
         patient += 1
-        break
         
     dw_total = dw / 20 
     de_total = de / 20 

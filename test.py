@@ -24,7 +24,7 @@ if __name__ == "__main__":
     de = 0
     dc = 0
 
-    patient = 200
+    patient = 215
     while patient < 216:
 
         path = glob(config['root'] + "/*pat{}*".format(patient))[0]
@@ -44,7 +44,6 @@ if __name__ == "__main__":
             gt.extend(test_label[0])
             pred.extend(prediction)
 
-            '''
             scan = test_slice[0,:,:,2]
             tmp_label = test_label[0]
 
@@ -60,7 +59,6 @@ if __name__ == "__main__":
             plt.imshow(prediction,cmap='gray')
             plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name,patient,slice_no), bbox_inches='tight')
             plt.close(fig)
-            '''
 
 
 
@@ -100,7 +98,9 @@ if __name__ == "__main__":
         dc += dice_core
 
         patient += 1
+        break
         
+    '''
     dw_total = dw / 15
     de_total = de / 15
     dc_total = dc / 15
@@ -111,6 +111,8 @@ if __name__ == "__main__":
     print("Dice enhancing tumor score: {:0.4f}".format(de_total)) 
     print("Dice core tumor score: {:0.4f}".format(dc_total)) 
     print("=======================================")
+
+    '''
 
 
 

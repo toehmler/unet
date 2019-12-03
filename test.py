@@ -52,7 +52,7 @@ if __name__ == "__main__":
         plt.subplot(133)
         plt.title('Prediction')
         plt.imshow(prediction,cmap='gray')
-        plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name,patient_no,slice_no), bbox_inches='tight')
+        plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name,patient,slice_no), bbox_inches='tight')
         plt.close(fig)
 
 

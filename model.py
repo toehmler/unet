@@ -46,15 +46,15 @@ def unet(input_size = (240,240,4)):
     '''
 
     inputs = Input(input_size)
-    conv1 = Conv2D(32, (4, 4), activation='relu', padding='same',
+    conv1 = Conv2D(32, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(inputs)
-    conv1 = Conv2D(32, (4, 4), activation='relu', padding='same',
+    conv1 = Conv2D(32, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(conv1)
     pool1 = MaxPooling2D(pool_size=(2, 2))(conv1)
 
-    conv2 = Conv2D(64, (4, 4), activation='relu', padding='same',
+    conv2 = Conv2D(64, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(pool1)
-    conv2 = Conv2D(64, (4, 4), activation='relu', padding='same',
+    conv2 = Conv2D(64, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(conv2)
     pool2 = MaxPooling2D(pool_size=(2, 2))(conv2)
 
@@ -91,15 +91,15 @@ def unet(input_size = (240,240,4)):
 
     up8 = concatenate([Conv2DTranspose(64, (2, 2), strides=(2, 2),padding='same',
                 kernel_initializer=initializers.random_normal(stddev=0.01))(conv7),conv2], axis=3)
-    conv8 = Conv2D(64, (4, 4), activation='relu', padding='same',
+    conv8 = Conv2D(64, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(up8)
-    conv8 = Conv2D(64, (4, 4), activation='relu', padding='same',)(conv8)
+    conv8 = Conv2D(64, (3, 3), activation='relu', padding='same',)(conv8)
 
     up9 = concatenate([Conv2DTranspose(32, (2, 2), strides=(2, 2), padding='same',
                 kernel_initializer=initializers.random_normal(stddev=0.01))(conv8),conv1], axis=3)
-    conv9 = Conv2D(32, (4, 4), activation='relu', padding='same',
+    conv9 = Conv2D(32, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(up9)
-    conv9 = Conv2D(32, (4, 4), activation='relu', padding='same',
+    conv9 = Conv2D(32, (3, 3), activation='relu', padding='same',
                    kernel_initializer=initializers.random_normal(stddev=0.01))(conv9)
 
     conv10 = Conv2D(5, (1, 1), activation='relu',

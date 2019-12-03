@@ -63,11 +63,11 @@ def generate_data(start, end):
 if __name__ == "__main__":
     
     model_name = sys.argv[1]                
-    start_pat = sys.argv[2]
-    end_pat = sys.argv[3]
-    eps = sys.argv[4]
-    bs = sys.argv[5]
-    vs = sys.argv[6]
+    start_pat = int(sys.argv[2])
+    end_pat = int(sys.argv[3])
+    eps = int(sys.argv[4])
+    bs = int(sys.argv[5])
+    vs = float(sys.argv[6])
 
     model = load_model("models/{}.h5".format(model_name),
             custom_objects = {"dice_coef" : dice_coef,

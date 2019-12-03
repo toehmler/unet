@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
 
     x, y, class_weights = generate_data(start_pat, end_pat)
-    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=0.25, shuffle=True, class_weights=class_weights)
+    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=0.25, shuffle=True, class_weight=class_weights)
     model.save('models/{}.h5'.format(model_name))
 
 

@@ -8,38 +8,6 @@ import numpy as np
 import keras.backend as K
 import tensorflow as tf
 
-def weighted_log_loss(y_true, y_pred):
-    # scale predictions so that the class probas of each sample sum to 1
-    y_pred /= K.sum(y_pred, axis=-1, keepdims=True)
-    # clip to prevent NaN's and Inf's
-    y_pred = K.clip(y_pred, K.epsilon(), 1 - K.epsilon())
-    # weights are assigned in this order : normal,necrotic,edema,enhancing 
-    weights=np.array([1,5,2,4])
-    weights = K.variable(weights)
-    loss = y_true * K.log(y_pred) * weights
-    loss = K.mean(-K.sum(loss, -1))
-    return loss
-
-def gen_dice_loss(y_true, y_pred):
-    '''
-    computes the sum of two losses : generalised dice loss and weighted cross entropy
-    '''
-
-    #generalised dice score is calculated as in this paper : https://arxiv.org/pdf/1707.03237
-    y_true_f = K.reshape(y_true,shape=(-1,4))
-    y_pred_f = K.reshape(y_pred,shape=(-1,4))
-    sum_p=K.sum(y_pred_f,axis=-2)
-    sum_r=K.sum(y_true_f,axis=-2)
-    sum_pr=K.sum(y_true_f * y_pred_f,axis=-2)
-    weights=K.pow(K.square(sum_r)+K.epsilon(),-1)
-    generalised_dice_numerator =2*K.sum(weights*sum_pr)
-    generalised_dice_denominator =K.sum(weights*(sum_r+sum_p))
-    generalised_dice_score =generalised_dice_numerator /generalised_dice_denominator
-    GDL=1-generalised_dice_score
-    del sum_p,sum_r,sum_pr,weights
-
-    return GDL
-
 def dice_coef(y_true, y_pred, smooth=1.0):
     ''' Dice Coefficient
 
@@ -48,7 +16,7 @@ def dice_coef(y_true, y_pred, smooth=1.0):
         y_pred (np.array): Prediction Heatmap
     '''
 
-    class_num = 2
+    class_num = 5
     for i in range(class_num):
         y_true_f = K.flatten(y_true[:,:,:,i])
         y_pred_f = K.flatten(y_pred[:,:,:,i])
@@ -141,7 +109,7 @@ def unet(input_size = (240,240,4)):
     model = Model(inputs=[inputs], outputs=[conv10])
 
     lr = 1e-4
-    model.compile(optimizer=Adam(lr=lr), loss='categorical_crossentropy', metrics=[dice_coef])
+    model.compile(optimizer=Adam(lr=lr), loss=dice_coef_loss, metrics=[dice_coef])
 
     return model
 

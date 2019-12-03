@@ -27,7 +27,7 @@ def generate_data(start, end):
             slice_label = slice[:,:,4]
             slice_x = slice[:,:,:4]
             # exclude slices that are more than 75% background
-            if len(np.argwhere(slice_x == 0)) > (240*240*2):
+            if len(np.argwhere(slice_x == 0)) > (240*240*3):
                 continue
             current_x.append(slice_x)
             labels.append(slice_label)
@@ -36,18 +36,18 @@ def generate_data(start, end):
         labels = np.array(labels)
 
         # transform data to one hot encoding
-        '''
+        pbar2 = tqdm(total = labels.shape[0])
         current_y = np.zeros((labels.shape[0],labels.shape[1],labels.shape[2],5))
         for z in range(labels.shape[0]):
+            pbar2.update(1)
             for i in range(labels.shape[1]):
                 for j in range(labels.shape[2]):
                     current_y[z,i,j,int(labels[z,i,j])] = 1
-        '''
         
+        pbar2.close()
         x.extend(current_x)
-#        y.extend(current_y)
+        y.extend(current_y)
 
-        y.extend(labels)
         current += 1
         pbar.update(1)
 
@@ -56,20 +56,15 @@ def generate_data(start, end):
     x, y = zip(*shuffle)
     x = np.array(x)
     y = np.array(y)
-    tmp_y = y.reshape(y.shape[0]*y.shape[1]*y.shape[2])
-    class_weights = class_weight.compute_class_weight('balanced',
-                                             np.unique(tmp_y),tmp_y)
-
-    one_hot_y = keras.utils.to_categorical(y)
     pbar.close()
-    return x, one_hot_y, class_weights
+    return x, y
     
 
 if __name__ == "__main__":
     model_name = input("Model name: ")
     model = load_model("models/{}.h5".format(model_name),
-            custom_objects = {"dice_coef" : dice_coef})  
-
+            custom_objects = {"dice_coef" : dice_coef
+                              "dice_coef_loss" : dice_coef_loss})  
     start_pat = int(input("Start patient: "))
     end_pat = int(input("End patient: "))
     eps = int(input('Epochs: '))
@@ -77,9 +72,9 @@ if __name__ == "__main__":
     vs = float(input('Validation split: '))
 
 
-    x, y, class_weights = generate_data(start_pat, end_pat)
+    x, y = generate_data(start_pat, end_pat)
 
-    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=vs, shuffle=True, class_weight=class_weights)
+    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=vs, shuffle=True)
     model.save('models/{}.h5'.format(model_name))
 
 

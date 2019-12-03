@@ -34,7 +34,6 @@ if __name__ == "__main__":
         gt = []
         pred = []
 
-        pbar = tqdm(total = scans.shape[0])
         for slice_no in range(scans.shape[0]):
             test_slice = scans[slice_no:slice_no+1,:,:,:4]
             test_label = scans[slice_no:slice_no+1,:,:,4]
@@ -64,9 +63,6 @@ if __name__ == "__main__":
             '''
 
 
-            pbar.update(1)
-
-            pbar.close()
 
             gt = np.array(gt)
             pred = np.array(pred)

@@ -64,53 +64,53 @@ if __name__ == "__main__":
 
 
 
-            gt = np.array(gt)
-            pred = np.array(pred)
+        gt = np.array(gt)
+        pred = np.array(pred)
 
-            dice_whole = DSC_whole(pred, gt)
-            dice_en = DSC_en(pred, gt)
-            dice_core = DSC_core(pred, gt)
+        dice_whole = DSC_whole(pred, gt)
+        dice_en = DSC_en(pred, gt)
+        dice_core = DSC_core(pred, gt)
 
-            sen_whole = sensitivity_whole(pred, gt)
-            sen_en = sensitivity_en(pred, gt)
-            sen_core = sensitivity_core(pred, gt)
+        sen_whole = sensitivity_whole(pred, gt)
+        sen_en = sensitivity_en(pred, gt)
+        sen_core = sensitivity_core(pred, gt)
 
-            spec_whole = specificity_whole(pred, gt)
-            spec_en = specificity_en(pred, gt)
-            spec_core = specificity_core(pred, gt)
-         
-            print("=======================================")
-            print("Patient {}".format(patient))
-            print("---------------------------------------")
-            print("Dice whole tumor score: {:0.4f}".format(dice_whole)) 
-            print("Dice enhancing tumor score: {:0.4f}".format(dice_en)) 
-            print("Dice core tumor score: {:0.4f}".format(dice_core)) 
-            print("---------------------------------------")
-            print("Sensitivity whole tumor score: {:0.4f}".format(sen_whole)) 
-            print("Sensitivity enhancing tumor score: {:0.4f}".format(sen_en)) 
-            print("Sensitivity core tumor score: {:0.4f}".format(sen_core)) 
-            print("---------------------------------------")
-            print("Specificity whole tumor score: {:0.4f}".format(spec_whole)) 
-            print("Specificity enhancing tumor score: {:0.4f}".format(spec_en)) 
-            print("Specificity core tumor score: {:0.4f}".format(spec_core)) 
-            print("=======================================")
-
-            dw += dice_whole
-            de += dice_en
-            dc += dice_core
-
-            patient += 1
-        
-        dw_total = dw / 15
-        de_total = de / 15
-        dc_total = dc / 15
+        spec_whole = specificity_whole(pred, gt)
+        spec_en = specificity_en(pred, gt)
+        spec_core = specificity_core(pred, gt)
+     
         print("=======================================")
-        print("Summary (Patients 190 - 205)")
+        print("Patient {}".format(patient))
         print("---------------------------------------")
         print("Dice whole tumor score: {:0.4f}".format(dice_whole)) 
         print("Dice enhancing tumor score: {:0.4f}".format(dice_en)) 
         print("Dice core tumor score: {:0.4f}".format(dice_core)) 
+        print("---------------------------------------")
+        print("Sensitivity whole tumor score: {:0.4f}".format(sen_whole)) 
+        print("Sensitivity enhancing tumor score: {:0.4f}".format(sen_en)) 
+        print("Sensitivity core tumor score: {:0.4f}".format(sen_core)) 
+        print("---------------------------------------")
+        print("Specificity whole tumor score: {:0.4f}".format(spec_whole)) 
+        print("Specificity enhancing tumor score: {:0.4f}".format(spec_en)) 
+        print("Specificity core tumor score: {:0.4f}".format(spec_core)) 
         print("=======================================")
+
+        dw += dice_whole
+        de += dice_en
+        dc += dice_core
+
+        patient += 1
+        
+    dw_total = dw / 15
+    de_total = de / 15
+    dc_total = dc / 15
+    print("=======================================")
+    print("Summary (Patients 190 - 205)")
+    print("---------------------------------------")
+    print("Dice whole tumor score: {:0.4f}".format(dice_whole)) 
+    print("Dice enhancing tumor score: {:0.4f}".format(dice_en)) 
+    print("Dice core tumor score: {:0.4f}".format(dice_core)) 
+    print("=======================================")
 
 
 

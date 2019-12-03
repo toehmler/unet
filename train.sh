@@ -1,7 +1,8 @@
 #!/bin/sh
-python3 train.py unet_3 0 40 50 32 0.25
-python3 train.py unet_3 40 80 50 32 0.25
-python3 train.py unet_3 80 120 50 32 0.25
-python3 train.py unet_3 120 160 50 32 0.25
-python3 train.py unet_3 160 190 50 32 0.25
+python3 train.py unet_4 0 25 25 32 0.25
+python3 train.py unet_4 25 55 30 32 0.25
+python3 train.py unet_4 55 90 35 32 0.25
+python3 train.py unet_4 90 130 40 32 0.25
+python3 train.py unet_4 130 180 50 32 0.25
+
 

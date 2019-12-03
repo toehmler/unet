@@ -30,13 +30,15 @@ def generate_data(start, end):
 #            if len(np.argwhere(slice_x == 0)) > (240*240*3):
 #                continue
             current_x.append(slice_x)
-            labels.append(slice_label)
+            categorical = keras.utils.to_categorical(slice_label, 
+                                                    num_classes = 5)
+            labels.append(categorical)
 
         current_x = np.array(current_x)
         labels = np.array(labels)
 
         # transform data to one hot encoding
-#        current_y = labels[:,:,keras.utils.to_categorical(labels)
+        '''
         pbar2 = tqdm(total = labels.shape[0])
         current_y = np.zeros((labels.shape[0],labels.shape[1],labels.shape[2],5))
         for z in range(labels.shape[0]):
@@ -45,8 +47,9 @@ def generate_data(start, end):
                 for j in range(labels.shape[2]):
                     current_y[z,i,j,int(labels[z,i,j])] = 1
         pbar2.close()
+        '''
         x.extend(current_x)
-        y.extend(current_y)
+        y.extend(labels)
 
         current += 1
         pbar.update(1)
@@ -61,21 +64,23 @@ def generate_data(start, end):
     
 
 if __name__ == "__main__":
-    model_name = input("Model name: ")
-    model = load_model("models/{}.h5".format(model_name),
-            custom_objects = {"dice_coef" : dice_coef,
-                              "dice_coef_loss" : dice_coef_loss})  
+#    model_name = input("Model name: ")
+#    model = load_model("models/{}.h5".format(model_name),
+#            custom_objects = {"dice_coef" : dice_coef,
+#                              "dice_coef_loss" : dice_coef_loss})  
     start_pat = int(input("Start patient: "))
     end_pat = int(input("End patient: "))
-    eps = int(input('Epochs: '))
-    bs = int(input('Batch size: '))
-    vs = float(input('Validation split: '))
+#    eps = int(input('Epochs: '))
+#    bs = int(input('Batch size: '))
+#    vs = float(input('Validation split: '))
 
 
     x, y = generate_data(start_pat, end_pat)
+    print("x shape:{}".format(x.shape))
+    print("y shape:{}".format(y.shape))
 
-    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=vs, shuffle=True)
-    model.save('models/{}.h5'.format(model_name))
+#    model.fit(x, y, epochs=eps, batch_size=bs, validation_split=vs, shuffle=True)
+#    model.save('models/{}.h5'.format(model_name))
 
 
 

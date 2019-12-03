@@ -1,4 +1,9 @@
 from keras.models import load_model
+import matplotlib.pyplot as plt
+import imageio
+from skimage import io
+import skimage
+
 import json
 from utils import *
 from model import *
@@ -32,6 +37,26 @@ if __name__ == "__main__":
         prediction = np.argmax(prediction, axis=-1)
         gt.extend(test_label[0])
         pred.extend(prediction)
+
+        scan = test_slice[0,:,:,2]
+        tmp_label = test_label[0]
+
+
+        fig = plt.figure(figsize=(15, 10))
+        plt.subplot(131)
+        plt.title('Input')
+        plt.imshow(scan, cmap='gray')
+        plt.subplot(132)
+        plt.title('Ground Truth')
+        plt.imshow(tmp_label,cmap='gray')
+        plt.subplot(133)
+        plt.title('Prediction')
+        plt.imshow(prediction,cmap='gray')
+        plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name,patient_no,slice_no), bbox_inches='tight')
+        plt.close(fig)
+
+
+
         pbar.update(1)
 
     pbar.close()

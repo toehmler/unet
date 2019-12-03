@@ -1,0 +1,307 @@
+=======================================
+Patient 200
+---------------------------------------
+Dice whole tumor score: 0.8588
+Dice enhancing tumor score: 0.8731
+Dice core tumor score: 0.7770
+---------------------------------------
+Sensitivity whole tumor score: 0.8789
+Sensitivity enhancing tumor score: 0.9453
+Sensitivity core tumor score: 0.7184
+---------------------------------------
+Specificity whole tumor score: 0.9974
+Specificity enhancing tumor score: 0.9994
+Specificity core tumor score: 0.9993
+=======================================
+=======================================
+Patient 201
+---------------------------------------
+Dice whole tumor score: 0.8148
+Dice enhancing tumor score: 0.7999
+Dice core tumor score: 0.8529
+---------------------------------------
+Sensitivity whole tumor score: 0.8876
+Sensitivity enhancing tumor score: 0.9474
+Sensitivity core tumor score: 0.8605
+---------------------------------------
+Specificity whole tumor score: 0.9955
+Specificity enhancing tumor score: 0.9987
+Specificity core tumor score: 0.9991
+=======================================
+=======================================
+Patient 202
+---------------------------------------
+Dice whole tumor score: 0.8589
+Dice enhancing tumor score: 0.8328
+Dice core tumor score: 0.7739
+---------------------------------------
+Sensitivity whole tumor score: 0.8185
+Sensitivity enhancing tumor score: 0.7547
+Sensitivity core tumor score: 0.6734
+---------------------------------------
+Specificity whole tumor score: 0.9988
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 0.9998
+=======================================
+=======================================
+Patient 203
+---------------------------------------
+Dice whole tumor score: 0.9270
+Dice enhancing tumor score: 0.9223
+Dice core tumor score: 0.9097
+---------------------------------------
+Sensitivity whole tumor score: 0.9307
+Sensitivity enhancing tumor score: 0.8916
+Sensitivity core tumor score: 0.8645
+---------------------------------------
+Specificity whole tumor score: 0.9988
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 0.9999
+=======================================
+=======================================
+Patient 204
+---------------------------------------
+Dice whole tumor score: 0.9211
+Dice enhancing tumor score: 0.9013
+Dice core tumor score: 0.8433
+---------------------------------------
+Sensitivity whole tumor score: 0.9388
+Sensitivity enhancing tumor score: 0.8346
+Sensitivity core tumor score: 0.7460
+---------------------------------------
+Specificity whole tumor score: 0.9986
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 0.9999
+=======================================
+=======================================
+Patient 205
+---------------------------------------
+Dice whole tumor score: 0.6792
+Dice enhancing tumor score: 1.0000
+Dice core tumor score: 0.2628
+---------------------------------------
+Sensitivity whole tumor score: 0.5600
+Sensitivity enhancing tumor score: 1.0000
+Sensitivity core tumor score: 0.1574
+---------------------------------------
+Specificity whole tumor score: 0.9999
+Specificity enhancing tumor score: 1.0000
+Specificity core tumor score: 1.0000
+=======================================
+=======================================
+Patient 206
+---------------------------------------
+Dice whole tumor score: 0.9229
+Dice enhancing tumor score: 0.9150
+Dice core tumor score: 0.8966
+---------------------------------------
+Sensitivity whole tumor score: 0.9174
+Sensitivity enhancing tumor score: 0.8693
+Sensitivity core tumor score: 0.8465
+---------------------------------------
+Specificity whole tumor score: 0.9983
+Specificity enhancing tumor score: 0.9997
+Specificity core tumor score: 0.9995
+=======================================
+=======================================
+Patient 207
+---------------------------------------
+Dice whole tumor score: 0.8711
+Dice enhancing tumor score: 0.7861
+Dice core tumor score: 0.7449
+---------------------------------------
+Sensitivity whole tumor score: 0.8526
+Sensitivity enhancing tumor score: 0.8133
+Sensitivity core tumor score: 0.7158
+---------------------------------------
+Specificity whole tumor score: 0.9988
+Specificity enhancing tumor score: 0.9996
+Specificity core tumor score: 0.9992
+=======================================
+=======================================
+Patient 208
+---------------------------------------
+Dice whole tumor score: 0.7900
+Dice enhancing tumor score: 0.8622
+Dice core tumor score: 0.7096
+---------------------------------------
+Sensitivity whole tumor score: 0.6831
+Sensitivity enhancing tumor score: 0.8121
+Sensitivity core tumor score: 0.5658
+---------------------------------------
+Specificity whole tumor score: 0.9996
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 0.9999
+=======================================
+=======================================
+Patient 209
+---------------------------------------
+Dice whole tumor score: 0.6375
+Dice enhancing tumor score: 0.1303
+Dice core tumor score: 0.0977
+---------------------------------------
+Sensitivity whole tumor score: 0.5149
+Sensitivity enhancing tumor score: 0.0809
+Sensitivity core tumor score: 0.0527
+---------------------------------------
+Specificity whole tumor score: 0.9990
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 1.0000
+=======================================
+=======================================
+Patient 210
+---------------------------------------
+Dice whole tumor score: 0.6213
+Dice enhancing tumor score: 0.4382
+Dice core tumor score: 0.4253
+---------------------------------------
+Sensitivity whole tumor score: 0.6546
+Sensitivity enhancing tumor score: 0.6752
+Sensitivity core tumor score: 0.4658
+---------------------------------------
+Specificity whole tumor score: 0.9976
+Specificity enhancing tumor score: 0.9987
+Specificity core tumor score: 0.9982
+=======================================
+=======================================
+Patient 211
+---------------------------------------
+Dice whole tumor score: 0.9225
+Dice enhancing tumor score: 0.9097
+Dice core tumor score: 0.8577
+---------------------------------------
+Sensitivity whole tumor score: 0.9039
+Sensitivity enhancing tumor score: 0.8759
+Sensitivity core tumor score: 0.7916
+---------------------------------------
+Specificity whole tumor score: 0.9989
+Specificity enhancing tumor score: 0.9997
+Specificity core tumor score: 0.9995
+=======================================
+=======================================
+Patient 212
+---------------------------------------
+Dice whole tumor score: 0.8782
+Dice enhancing tumor score: 0.8995
+Dice core tumor score: 0.7939
+---------------------------------------
+Sensitivity whole tumor score: 0.9090
+Sensitivity enhancing tumor score: 0.9546
+Sensitivity core tumor score: 0.9372
+---------------------------------------
+Specificity whole tumor score: 0.9968
+Specificity enhancing tumor score: 0.9996
+Specificity core tumor score: 0.9988
+=======================================
+=======================================
+Patient 213
+---------------------------------------
+Dice whole tumor score: 0.8738
+Dice enhancing tumor score: 0.8140
+Dice core tumor score: 0.7781
+---------------------------------------
+Sensitivity whole tumor score: 0.8466
+Sensitivity enhancing tumor score: 0.7354
+Sensitivity core tumor score: 0.6719
+---------------------------------------
+Specificity whole tumor score: 0.9973
+Specificity enhancing tumor score: 0.9995
+Specificity core tumor score: 0.9993
+=======================================
+=======================================
+Patient 214
+---------------------------------------
+Dice whole tumor score: 0.6645
+Dice enhancing tumor score: 0.8853
+Dice core tumor score: 0.6882
+---------------------------------------
+Sensitivity whole tumor score: 0.5004
+Sensitivity enhancing tumor score: 0.8217
+Sensitivity core tumor score: 0.5247
+---------------------------------------
+Specificity whole tumor score: 1.0000
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 1.0000
+=======================================
+=======================================
+Patient 215
+---------------------------------------
+Dice whole tumor score: 0.9264
+Dice enhancing tumor score: 0.9036
+Dice core tumor score: 0.9041
+---------------------------------------
+Sensitivity whole tumor score: 0.9594
+Sensitivity enhancing tumor score: 0.8482
+Sensitivity core tumor score: 0.8530
+---------------------------------------
+Specificity whole tumor score: 0.9981
+Specificity enhancing tumor score: 0.9997
+Specificity core tumor score: 0.9996
+=======================================
+=======================================
+Patient 216
+---------------------------------------
+Dice whole tumor score: 0.8793
+Dice enhancing tumor score: 0.9157
+Dice core tumor score: 0.7309
+---------------------------------------
+Sensitivity whole tumor score: 0.8111
+Sensitivity enhancing tumor score: 0.9289
+Sensitivity core tumor score: 0.6094
+---------------------------------------
+Specificity whole tumor score: 0.9994
+Specificity enhancing tumor score: 0.9996
+Specificity core tumor score: 0.9995
+=======================================
+=======================================
+Patient 217
+---------------------------------------
+Dice whole tumor score: 0.8613
+Dice enhancing tumor score: 0.6837
+Dice core tumor score: 0.6667
+---------------------------------------
+Sensitivity whole tumor score: 0.9119
+Sensitivity enhancing tumor score: 0.8511
+Sensitivity core tumor score: 0.8520
+---------------------------------------
+Specificity whole tumor score: 0.9971
+Specificity enhancing tumor score: 0.9995
+Specificity core tumor score: 0.9990
+=======================================
+=======================================
+Patient 218
+---------------------------------------
+Dice whole tumor score: 0.8317
+Dice enhancing tumor score: 0.8381
+Dice core tumor score: 0.6947
+---------------------------------------
+Sensitivity whole tumor score: 0.7904
+Sensitivity enhancing tumor score: 0.7458
+Sensitivity core tumor score: 0.6086
+---------------------------------------
+Specificity whole tumor score: 0.9988
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 0.9996
+=======================================
+=======================================
+Patient 219
+---------------------------------------
+Dice whole tumor score: 0.5683
+Dice enhancing tumor score: 0.7454
+Dice core tumor score: 0.5868
+---------------------------------------
+Sensitivity whole tumor score: 0.5223
+Sensitivity enhancing tumor score: 0.6859
+Sensitivity core tumor score: 0.4652
+---------------------------------------
+Specificity whole tumor score: 0.9980
+Specificity enhancing tumor score: 0.9999
+Specificity core tumor score: 0.9998
+=======================================
+=======================================
+Summary (Patients 200 - 219)
+---------------------------------------
+Dice whole tumor score: 0.8583
+Dice enhancing tumor score: 0.8450
+Dice core tumor score: 0.7366
+=======================================

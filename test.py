@@ -26,11 +26,10 @@ if __name__ == "__main__":
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
         test_label = scans[slice_no:slice_no+1,:,:,4]
         prediction = model.predict(test_slice, batch_size=32)
+        prediction = prediction[0]
         prediction = np.around(prediction)
         prediction = np.argmax(prediction, axis=-1)
-        print(prediction.shape)
-        print(test_label.shape)
-        gt.extend(truth)
+        gt.extend(test_label[0])
         pred.extend(prediction)
         pbar.update(1)
 

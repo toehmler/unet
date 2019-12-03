@@ -141,7 +141,7 @@ def unet(input_size = (240,240,4)):
     model = Model(inputs=[inputs], outputs=[conv10])
 
     lr = 1e-4
-    model.compile(optimizer=Adam(lr=lr), loss=gen_dice_loss, metrics=[dice_coef])
+    model.compile(optimizer=Adam(lr=lr), loss='categorical_crossentropy', metrics=[dice_coef])
 
     return model
 

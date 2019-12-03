@@ -116,4 +116,4 @@ if __name__ == "__main__":
     model_name = input('Model Name: ')
     unet_model = unet()
     print(unet_model.summary())
-#    unet_model.save('models/{}.h5'.format(model_name))
+    unet_model.save('models/{}.h5'.format(model_name))

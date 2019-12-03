@@ -9,7 +9,7 @@ from utils import *
 from model import *
 from metrics import *
 from tqdm import tqdm
-
+import sys
 
 with open('config.json') as config_file:
     config = json.load(config_file)
@@ -20,11 +20,13 @@ if __name__ == "__main__":
             custom_objects = {"dice_coef_loss" : dice_coef_loss,
                               "dice_coef" : dice_coef})
 
+    sys.stdout = open('outputs/{}'.format(model_name), 'w')
     dw = 0
     de = 0
     dc = 0
 
     patient = 200
+    
     while patient < 220:
 
         path = glob(config['root'] + "/*pat{}*".format(patient))[0]

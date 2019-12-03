@@ -63,7 +63,7 @@ def generate_data(start, end):
 if __name__ == "__main__":
     model_name = input("Model name: ")
     model = load_model("models/{}.h5".format(model_name),
-            custom_objects = {"dice_coef" : dice_coef
+            custom_objects = {"dice_coef" : dice_coef,
                               "dice_coef_loss" : dice_coef_loss})  
     start_pat = int(input("Start patient: "))
     end_pat = int(input("End patient: "))

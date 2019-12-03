@@ -61,16 +61,17 @@ def generate_data(start, end):
     
 
 if __name__ == "__main__":
-    model_name = input("Model name: ")
+    
+    model_name = sys.argv[1]                
+    start_pat = sys.argv[2]
+    end_pat = sys.argv[3]
+    eps = sys.argv[4]
+    bs = sys.argv[5]
+    vs = sys.argv[6]
+
     model = load_model("models/{}.h5".format(model_name),
             custom_objects = {"dice_coef" : dice_coef,
                               "dice_coef_loss" : dice_coef_loss})  
-
-    start_pat = sys.argv[1]
-    end_pat = sys.argv[2]
-    eps = sys.argv[3]
-    bs = sys.argv[4]
-    vs = sys.argv[5]
 
     '''
     start_pat = int(input("Start patient: "))

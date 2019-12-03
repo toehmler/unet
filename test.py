@@ -22,12 +22,14 @@ if __name__ == "__main__":
     pred = []
 
     pbar = tqdm(total = scans.shape[0])
-    for slice in scans:
-        test_slice = slice[:,:,:4]
-        test_label = slice[:,:,4]
+    for slice_no in range(scans.shape[0]):
+        test_slice = scans[slice_no:slice_no+1,:,:,:4]
+        test_label = scans[slice_no:slice_no+1,:,:,4]
         prediction = model.predict(test_slice, batch_size=32)
         prediction = np.around(prediction)
         prediction = np.argmax(prediction, axis=-1)
+        print(prediction.shape)
+        print(test_label.shape)
         gt.extend(truth)
         pred.extend(prediction)
         pbar.update(1)

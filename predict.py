@@ -1,5 +1,6 @@
 from keras.models import load_model
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import imageio
 from skimage import io
 import skimage
@@ -41,6 +42,9 @@ if __name__ == "__main__":
 
     pbar = tqdm(total = scans.shape[0])
 
+    ims = []
+    fig = plt.figure()
+
     for slice_no in range(scans.shape[0]):
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
         test_label = scans[slice_no:slice_no+1,:,:,4]
@@ -52,7 +56,17 @@ if __name__ == "__main__":
         pred.extend(prediction)
         pbar.update(1)
 
+        scan = test_slice[0,:,:,2]
+        label = test_label[0]
+
+        prediction_img = plt.imshow(prediction, cmap='gray', animated=True)
+        ims.append([prediction_img])
+    ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
+    ani.save('test_animation.mp4')
+
     pbar.close()
+
+    gif = animation.ArtistAnimation(fig<S-F7>
 
     gt = np.array(gt)
     pred = np.array(pred)
@@ -84,10 +98,6 @@ if __name__ == "__main__":
     print("Specificity enhancing tumor score: {:0.4f}".format(spec_en)) 
     print("Specificity core tumor score: {:0.4f}".format(spec_core)) 
     print("=======================================")
-
-    dw += dice_whole
-    de += dice_en
-    dc += dice_core
 
 
 

@@ -41,6 +41,23 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     print('threes shape: {}'.format(threes.shape))
     print('fours shape: {}'.format(fours.shape))
 
+    fig = plt.figure()
+    for i in range(ones.shape[0]):
+        bg_copy[ones[i][0]][ones[i][1]] = red
+    for i in range(twos.shape[0]):
+        bg_copy[twos[i][0]][twos[i][1]] = green 
+    for i in range(threes.shape[0]):
+        bg_copy[threes[i][0]][threes[i][1]] = blue 
+    for i in range(fours.shape[0]):
+        bg_copy[fours[i][0]][fours[i][1]] = yellow
+
+    plt.imshow(bg_copy)
+    plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name, patient, slice))
+
+    plt.close(fig)
+
+
+
     '''
 
     fig = plt.figure()

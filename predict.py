@@ -10,9 +10,51 @@ from model import *
 from metrics import *
 from tqdm import tqdm
 import sys
+from skimage.exposure import adjust_gamma
+from skimage import color, img_as_float
 
 with open('config.json') as config_file:
     config = json.load(config_file)
+
+
+def gen_prediction_mask(background, mask, model_name, patient, slice):
+    ones = np.argwhere(mask == 1)
+    twos = np.argwhere(mask == 2)
+    threes = np.argwhere(mask == 3)
+    fours = np.argwhere(mask == 4)
+
+    fig = plt.figure()
+
+    background = img_as_float(background)
+    background = adjust_gamma(color.gray2rgb(background), 0.65)
+    bg_copy = background.copy()
+    red = [1, 0.2, 0.2]
+    yellow = [1, 1, 0.25]
+    green = [0.35, 0.75, 0.25]
+    blue = [0, 0.25, 0.9]
+
+
+    for i in xrange(len(ones)):
+        bg_copy[ones[i][0]][ones[i][1]] = red
+    for i in xrange(len(twos)):
+        bg_copy[twos[i][0]][twos[i][1]] = green 
+    for i in xrange(len(threes)):
+        bg_copy[threes[i][0]][threes[i][1]] = blue 
+    for i in xrange(len(fours)):
+        bg_copy[fours[i][0]][fours[i][1]] = yellow
+    
+    plt.imshow(bg_copy)
+    plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name, patient, slice))
+    plt.close(fig)
+
+
+    
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -37,7 +79,7 @@ if __name__ == "__main__":
     for slice_no in range(scans.shape[0]):
         
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
-        test_label = scans[slice_no:slice_no+1,:,:,4]
+        test_labkel = scans[slice_no:slice_no+1,:,:,4]
         prediction = model.predict(test_slice, batch_size=32)
         prediction = prediction[0]
         prediction = np.around(prediction)
@@ -47,6 +89,8 @@ if __name__ == "__main__":
 
         scan = test_slice[0,:,:,2]
         label = test_label[0]
+
+        gen_prediction_mask(scan, label, model_name, patient_no, slice_no)
 
         '''
         im = plt.figure(figsize=(15, 10))
@@ -60,12 +104,10 @@ if __name__ == "__main__":
         im = plt.title('Prediction')
         im = plt.imshow(prediction,cmap='gray')
         '''
-        fig = plt.figure()
 
-        plt.imshow(label, cmap='gray', animated=True)
-        plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
-        plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name, patient_no, slice_no))
-        plt.close(fig)
+        #plt.imshow(label, cmap='gray', animated=True)
+        #plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
+        #plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name, patient_no, slice_no))
 
         pbar.update(1)
 

@@ -25,6 +25,8 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
 
 
     background = img_as_float(background)
+    background = color.gray2rgb(background)
+
 #    background = adjust_gamma(color.gray2rgb(background), 0.65)
     bg_copy = background.copy()
     red = [1, 0.2, 0.2]

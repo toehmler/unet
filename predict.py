@@ -32,13 +32,12 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     background = color.gray2rgb(background)
 
     background = rescale_intensity(background, in_range=(0,1))
-    background = adjust_gamma(background, 0.65)
+    background = adjust_gamma(background, 0.45)
 
 #    bg_min = print('post min: {}'.format(np.min(background)))
 #    bg_max = print('post max: {}'.format(np.max(background)))
 
 
-#    background = adjust_gamma(color.gray2rgb(background), 0.65)
     bg_copy = background.copy()
     red = [1, 0.2, 0.2]
     yellow = [1, 1, 0.25]
@@ -88,7 +87,7 @@ if __name__ == "__main__":
         model_name = input("Model name: ") 
         patient_no = input("Patient no: ")
 
-    path = glob(config['root'] + "/*pat{}*".format(patient_no))[0]
+    path = glob(config['root'] + "/*pat{}*".format(patient_no))[1]
     model = load_model("models/{}.h5".format(model_name),
             custom_objects = {"dice_coef_loss" : dice_coef_loss,
                               "dice_coef" : dice_coef})
@@ -107,12 +106,12 @@ if __name__ == "__main__":
         
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
         test_label = scans[slice_no:slice_no+1,:,:,4]
-        prediction = model.predict(test_slice, batch_size=32)
-        prediction = prediction[0]
-        prediction = np.around(prediction)
-        prediction = np.argmax(prediction, axis=-1)
+#        prediction = model.predict(test_slice, batch_size=32)
+#        prediction = prediction[0]
+#        prediction = np.around(prediction)
+#        prediction = np.argmax(prediction, axis=-1)
         gt.extend(test_label[0])
-        pred.extend(prediction)
+#        pred.extend(prediction)
 
         scan = test_slice[0,:,:,1]
         label = test_label[0]
@@ -150,6 +149,7 @@ if __name__ == "__main__":
 
 
     pbar.close()
+    '''
 
     gt = np.array(gt)
     pred = np.array(pred)
@@ -181,6 +181,7 @@ if __name__ == "__main__":
     print("Specificity enhancing tumor score: {:0.4f}".format(spec_en)) 
     print("Specificity core tumor score: {:0.4f}".format(spec_core)) 
     print("=======================================")
+    '''
 
 
 

@@ -25,12 +25,16 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
 
 
     background = img_as_float(background)
-    background = adjust_gamma(color.gray2rgb(background), 0.65)
+#    background = adjust_gamma(color.gray2rgb(background), 0.65)
     bg_copy = background.copy()
     red = [1, 0.2, 0.2]
     yellow = [1, 1, 0.25]
     green = [0.35, 0.75, 0.25]
     blue = [0, 0.25, 0.9]
+    print('ones: {}'.format(ones))
+    print('twos: {}'.format(twos))
+    print('threes: {}'.format(threes))
+    print('fours: {}'.format(fours))
 
     print('ones shape: {}'.format(ones.shape))
     print('twos shape: {}'.format(twos.shape))

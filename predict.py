@@ -32,6 +32,7 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     background = color.gray2rgb(background)
 
     background = rescale_intensity(background, in_range=(0,1))
+    background = adjust_gamma(background, 0.65)
 
 #    bg_min = print('post min: {}'.format(np.min(background)))
 #    bg_max = print('post max: {}'.format(np.max(background)))
@@ -113,7 +114,7 @@ if __name__ == "__main__":
         gt.extend(test_label[0])
         pred.extend(prediction)
 
-        scan = test_slice[0,:,:,2]
+        scan = test_slice[0,:,:,1]
         label = test_label[0]
 
         gen_prediction_mask(scan, label, model_name, patient_no, slice_no)

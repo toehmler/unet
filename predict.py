@@ -61,12 +61,11 @@ if __name__ == "__main__":
 
         prediction_img = plt.imshow(prediction, cmap='gray', animated=True)
         ims.append([prediction_img])
+
     ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
     ani.save('test_animation.mp4')
 
     pbar.close()
-
-    gif = animation.ArtistAnimation(fig<S-F7>
 
     gt = np.array(gt)
     pred = np.array(pred)

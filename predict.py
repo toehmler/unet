@@ -30,22 +30,12 @@ if __name__ == "__main__":
     gt = []
     pred = []
 
-    for slice_no in range(scans.shape[0]):
-        test_slice = scans[slice_no:slice_no+1,:,:,:4]
-        test_label = scans[slice_no:slice_no+1,:,:,4]
-        prediction = model.predict(test_slice, batch_size=32)
-        prediction = prediction[0]
-        prediction = np.around(prediction)
-        prediction = np.argmax(prediction, axis=-1)
-        gt.extend(test_label[0])
-        pred.extend(prediction)
-
     pbar = tqdm(total = scans.shape[0])
 
-    ims = []
-    fig = plt.figure(figsize=(15, 10))
+    #ims = []
 
     for slice_no in range(scans.shape[0]):
+        
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
         test_label = scans[slice_no:slice_no+1,:,:,4]
         prediction = model.predict(test_slice, batch_size=32)
@@ -54,11 +44,11 @@ if __name__ == "__main__":
         prediction = np.argmax(prediction, axis=-1)
         gt.extend(test_label[0])
         pred.extend(prediction)
-        pbar.update(1)
 
         scan = test_slice[0,:,:,2]
         label = test_label[0]
 
+        '''
         im = plt.figure(figsize=(15, 10))
         im = plt.subplot(131)
         im = plt.title('Input')
@@ -69,15 +59,25 @@ if __name__ == "__main__":
         im = plt.subplot(133)
         im = plt.title('Prediction')
         im = plt.imshow(prediction,cmap='gray')
+        '''`
+        fig = plt.figure()
 
-        #prediction_img = plt.imshow(label, cmap='gray', animated=True)
-        #prediction_img = plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
+        plt.imshow(label, cmap='gray', animated=True)
+        plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
+        plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name, patient_no, slice_no))
+        plt.close(fig)
+
+        pbar.update(1)
+
+
+
+
         #ims.append([prediction_img])
-        ims.append([im])
+        #ims.append([im])
+        #plt.close(im)
 
-    ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
-    ani.save('test.gif')
-    plt.close()
+#    ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
+#    ani.save('test.gif')
 
 
     pbar.close()

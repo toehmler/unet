@@ -43,7 +43,7 @@ if __name__ == "__main__":
     pbar = tqdm(total = scans.shape[0])
 
     ims = []
-    fig = plt.figure()
+    fig = plt.figure(figsize=(15, 10))
 
     for slice_no in range(scans.shape[0]):
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
@@ -59,12 +59,26 @@ if __name__ == "__main__":
         scan = test_slice[0,:,:,2]
         label = test_label[0]
 
-        prediction_img = plt.imshow(label, cmap='gray', animated=True)
-        prediction_img = plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
-        ims.append([prediction_img])
+        im = plt.figure(figsize=(15, 10))
+        im = plt.subplot(131)
+        im = plt.title('Input')
+        im = plt.imshow(scan, cmap='gray')
+        im = plt.subplot(132)
+        im = plt.title('Ground Truth')
+        im = plt.imshow(label,cmap='gray')
+        im = plt.subplot(133)
+        im = plt.title('Prediction')
+        im = plt.imshow(prediction,cmap='gray')
+
+        #prediction_img = plt.imshow(label, cmap='gray', animated=True)
+        #prediction_img = plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
+        #ims.append([prediction_img])
+        ims.apend([im])
 
     ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
-    ani.save('test_animation.gif')
+    ani.save('test.gif')
+    plt.close()
+
 
     pbar.close()
 

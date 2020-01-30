@@ -10,7 +10,7 @@ from model import *
 from metrics import *
 from tqdm import tqdm
 import sys
-from skimage.exposure import adjust_gamma
+from skimage.exposure import adjust_gamma, rescale_intensity
 from skimage import color, img_as_float
 
 with open('config.json') as config_file:
@@ -26,11 +26,15 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
 
 #    background = img_as_float(background)
 
-    bg_min = print('pre-color bg min: {}'.format(np.min(background)))
-    bg_max = print('pre-color bg max: {}'.format(np.max(background)))
+    bg_min = print('pre min: {}'.format(np.min(background)))
+    bg_max = print('pre max: {}'.format(np.max(background)))
+
     background = color.gray2rgb(background)
-    bg_min = print('post-color bg min: {}'.format(np.min(background)))
-    bg_max = print('post-color bg max: {}'.format(np.max(background)))
+
+    background = rescale_intensity(background, in_range=(0,1))
+
+    bg_min = print('post min: {}'.format(np.min(background)))
+    bg_max = print('post max: {}'.format(np.max(background)))
 
 
 #    background = adjust_gamma(color.gray2rgb(background), 0.65)

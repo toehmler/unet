@@ -17,16 +17,16 @@ with open('config.json') as config_file:
     config = json.load(config_file)
 
 
-def gen_prediction_mask(background, mask, model_name, patient, slice):
+def gen_prediction_mask(bg, mask, model_name, patient, slice):
     ones = np.argwhere(mask == 1)
     twos = np.argwhere(mask == 2)
     threes = np.argwhere(mask == 3)
     fours = np.argwhere(mask == 4)
 
+    background = io.imread(bg)
 
     background = img_as_float(background)
     background = color.gray2rgb(background)
-    background = adjust_gamma(background, 0.65)
 
 
 #    background = adjust_gamma(color.gray2rgb(background), 0.65)

@@ -26,6 +26,8 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
 
     background = img_as_float(background)
     background = color.gray2rgb(background)
+    background = adjust_gamma(background, 0.65)
+
 
 #    background = adjust_gamma(color.gray2rgb(background), 0.65)
     bg_copy = background.copy()
@@ -69,26 +71,16 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     plt.close(fig)
     '''
 
-
-
-
-    
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    model_name = input("Model name: ") 
-    model = load_model("models/{}.h5".format(model_name),
-            custom_objects = {"dice_coef_loss" : dice_coef_loss,
-                              "dice_coef" : dice_coef})
-
-
-    patient_no = input("Patient no: ")
+    if len(sys.argv) == 3:
+        model_name = sys.argv[1]
+        patient_no = sys.argv[2]
+    else:
+        model_name = input("Model name: ") 
+        model = load_model("models/{}.h5".format(model_name),
+                custom_objects = {"dice_coef_loss" : dice_coef_loss,
+                                  "dice_coef" : dice_coef})
+        patient_no = input("Patient no: ")
     path = glob(config['root'] + "/*pat{}*".format(patient_no))[0]
     scans = load_scans(path)
     scans = norm_scans(scans)

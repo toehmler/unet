@@ -17,7 +17,6 @@ def generate_data(start, end):
     y = []
     pbar = tqdm(total = (end - start))
     while current < end:
-
         path = glob(config['root'] + '/*pat{}*'.format(current))[0]
         scans = load_scans(path)
         scans = norm_scans(scans)

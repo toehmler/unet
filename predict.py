@@ -26,15 +26,15 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
 
 #    background = img_as_float(background)
 
-    bg_min = print('pre min: {}'.format(np.min(background)))
-    bg_max = print('pre max: {}'.format(np.max(background)))
+#    bg_min = print('pre min: {}'.format(np.min(background)))
+#    bg_max = print('pre max: {}'.format(np.max(background)))
 
     background = color.gray2rgb(background)
 
     background = rescale_intensity(background, in_range=(0,1))
 
-    bg_min = print('post min: {}'.format(np.min(background)))
-    bg_max = print('post max: {}'.format(np.max(background)))
+#    bg_min = print('post min: {}'.format(np.min(background)))
+#    bg_max = print('post max: {}'.format(np.max(background)))
 
 
 #    background = adjust_gamma(color.gray2rgb(background), 0.65)
@@ -85,11 +85,13 @@ if __name__ == "__main__":
         patient_no = sys.argv[2]
     else:
         model_name = input("Model name: ") 
-        model = load_model("models/{}.h5".format(model_name),
-                custom_objects = {"dice_coef_loss" : dice_coef_loss,
-                                  "dice_coef" : dice_coef})
         patient_no = input("Patient no: ")
+
     path = glob(config['root'] + "/*pat{}*".format(patient_no))[0]
+    model = load_model("models/{}.h5".format(model_name),
+            custom_objects = {"dice_coef_loss" : dice_coef_loss,
+                              "dice_coef" : dice_coef})
+
     scans = load_scans(path)
     scans = norm_scans(scans)
 

@@ -33,6 +33,8 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     green = [0.35, 0.75, 0.25]
     blue = [0, 0.25, 0.9]
 
+    print('ones shape: {}'.format(ones.shape))
+
 
     for i in xrange(len(ones)):
         bg_copy[ones[i][0]][ones[i][1]] = red

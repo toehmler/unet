@@ -59,7 +59,7 @@ if __name__ == "__main__":
         im = plt.subplot(133)
         im = plt.title('Prediction')
         im = plt.imshow(prediction,cmap='gray')
-        '''`
+        '''
         fig = plt.figure()
 
         plt.imshow(label, cmap='gray', animated=True)

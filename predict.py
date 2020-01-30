@@ -59,7 +59,7 @@ if __name__ == "__main__":
         scan = test_slice[0,:,:,2]
         label = test_label[0]
 
-        prediction_img = plt.imshow(tmp_label, cmap='gray', animated=True)
+        prediction_img = plit.imshow(label, cmap='gray', animated=True)
         prediction_img = plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
         ims.append([prediction_img])
 

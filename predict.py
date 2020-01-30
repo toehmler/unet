@@ -73,7 +73,7 @@ if __name__ == "__main__":
         #prediction_img = plt.imshow(label, cmap='gray', animated=True)
         #prediction_img = plt.imshow(prediction, cmap='jet', alpha=0.5, animated=True)
         #ims.append([prediction_img])
-        ims.apend([im])
+        ims.append([im])
 
     ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
     ani.save('test.gif')

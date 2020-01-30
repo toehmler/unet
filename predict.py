@@ -79,7 +79,7 @@ if __name__ == "__main__":
     for slice_no in range(scans.shape[0]):
         
         test_slice = scans[slice_no:slice_no+1,:,:,:4]
-        test_labkel = scans[slice_no:slice_no+1,:,:,4]
+        test_label = scans[slice_no:slice_no+1,:,:,4]
         prediction = model.predict(test_slice, batch_size=32)
         prediction = prediction[0]
         prediction = np.around(prediction)

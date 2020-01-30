@@ -25,6 +25,8 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
 
 
     background = img_as_float(background)
+    bg_min = print('bg min: {}'.format(min(background)))
+    bg_max = print('bg max: {}'.format(max(background)))
 #    background = color.gray2rgb(background)
 
 

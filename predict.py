@@ -23,7 +23,6 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     threes = np.argwhere(mask == 3)
     fours = np.argwhere(mask == 4)
 
-    fig = plt.figure()
 
     background = img_as_float(background)
     background = adjust_gamma(color.gray2rgb(background), 0.65)
@@ -34,8 +33,13 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     blue = [0, 0.25, 0.9]
 
     print('ones shape: {}'.format(ones.shape))
+    print('twos shape: {}'.format(twos.shape))
+    print('threes shape: {}'.format(threes.shape))
+    print('fours shape: {}'.format(fours.shape))
 
+    '''
 
+    fig = plt.figure()
     for i in xrange(len(ones)):
         bg_copy[ones[i][0]][ones[i][1]] = red
     for i in xrange(len(twos)):
@@ -47,7 +51,11 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     
     plt.imshow(bg_copy)
     plt.savefig('outputs/{}_pat{}_slice{}.png'.format(model_name, patient, slice))
+
     plt.close(fig)
+    '''
+
+
 
 
     

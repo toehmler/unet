@@ -23,10 +23,12 @@ def gen_prediction_mask(background, mask, model_name, patient, slice):
     threes = np.argwhere(mask == 3)
     fours = np.argwhere(mask == 4)
     print('pre color shape: {}'.format(background.shape))
+
+
+    background = img_as_float(background)
     print(background)
 
-
-#    background = img_as_float(background)
+#
 #    bg_min = print('bg min: {}'.format(min(background)))
 #    bg_max = print('bg max: {}'.format(max(background)))
     background = color.gray2rgb(background)

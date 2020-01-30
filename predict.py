@@ -63,7 +63,7 @@ if __name__ == "__main__":
         ims.append([prediction_img])
 
     ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True, repeat_delay=1000)
-    ani.save('test_animation.mp4')
+    ani.save('test_animation.gif')
 
     pbar.close()
 

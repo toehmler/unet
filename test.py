@@ -25,7 +25,7 @@ if __name__ == "__main__":
     de = 0
     dc = 0
 
-    patient = 219 
+    patient = 200 
     pbar = tqdm(total = 1)
     
     while patient < 220:
